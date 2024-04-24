@@ -67,8 +67,9 @@ char* Person::compute_relation(int level){
     for(int i = 2; i <= level; i++){
         char *temp2 = new char[strlen("great ") + strlen(temp) + 1];
         strcat(strcpy(temp2, "great "), temp);
-        delete[] temp;
+        char *storeTemp = temp;
         temp = temp2;
+        delete[] temp;
     }
     //delete[] temp;
     return temp;
@@ -82,4 +83,5 @@ void expand(Person ***t, int *MAX){
   memcpy(temp, *t, *MAX * sizeof(**t));
   *MAX *= 2;
   *t = temp;
+  delete[] temp;
 }
